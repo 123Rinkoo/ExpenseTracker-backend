@@ -6,7 +6,9 @@ const sequelize=require('./util/database');
 const bodyParser = require('body-parser');
 
 app.use(cors());
+app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
+
 app.use('/user', UserRoute);
 
 sequelize
