@@ -36,10 +36,10 @@ router.post('/login',(req, res, next)=>{
                return res.status(404).json({success: false, message:"User doesnot exist"});  
             }
             else if(found.password!== req.body.key2){
-                return res.status(500).json({success: false, message:"Password is wrong"}); 
+                return res.status(401).json({success: false, message:"Password is wrong"}); 
             }
             else{
-                return res.status(200).json({success: true, message:"Your are succesfully login"});
+                return res.status(200).json({success: true, message:"User login sucessful"});
             }
         })
         .catch(err => console.log(err));
