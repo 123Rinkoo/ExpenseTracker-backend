@@ -43,7 +43,7 @@ router.post('/login', (req, res, next) => {
             else {
                 bcrypt.compare(req.body.key2, found.password, function (err, result) {
                     if (err) {
-                        console.log('something went wrong');
+                        throw new Error('something went wrong');
                     }
                     if (result) {
                         return res.status(200).json({ success: true, message: "User login sucessful" });
@@ -56,7 +56,7 @@ router.post('/login', (req, res, next) => {
             }
 
         })
-        .catch(err => console.log(err));
+        .catch(err =>{ return res.status(500).json({ success: false, message: err })});
 
 })
 
