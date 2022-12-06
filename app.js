@@ -1,9 +1,10 @@
 const express= require('express');
 const app=express();
 var cors=require('cors');
-
+const path = require('path');
 const UserRoute=require('./Route/User');
 const ExpenseRoute=require('./Route/expense');
+
 
 const User=require('./model/user');
 const Expense=require('./model/expense');
@@ -15,6 +16,7 @@ app.use(cors());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
+app.use(express.static(path.join(__dirname, 'public')));
 app.use('/user', UserRoute);
 app.use('/expense', ExpenseRoute);
 
@@ -38,5 +40,6 @@ sequelize
 // make route
 
 // install sequelize , mysql2
-// make util => database, make any model, 
+// make util => database
+// make any model 
 // app.js pe pehli table k liye.

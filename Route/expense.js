@@ -1,25 +1,10 @@
 const express = require('express');
 const router = express.Router();
-const Expense = require('../model/expense');
+const ExpenseController = require('../controller/expense');
+const authUser=require('../middleware/auth');
 
-router.post('/addexpense',(req, res, next)=>{
-    Expense.create({Expense_Amount: req.body.key1, Description: req.body.key2, Category: req.body.key3})
-    .then(result=>res.json(result))
-    .catch(err=>console.log(err))
-})
+router.post('/addexpense', authUser.authenticate,ExpenseController.addExpense);
+router.get('/getexpense', authUser.authenticate,ExpenseController.getExpense);
+router.delete('/deleting/:expenseId', ExpenseController.deleteExpense);
 
-router.get('/getexpense', (req, res, next)=>{
-    Expense.findAll()
-    .then(expenses=>{
-        res.json(expenses);
-    })
-    .catch(err=> console.log(err));
-})
-
-router.delete('/deleting/:expenseId', (req, res, next)=>{
-    const ExpId=req.params.expenseId;
-    Expense.findByPk(ExpId)
-    .then(found=>found.destroy())
-    .catch(err=>console.log(err));
-})
 module.exports = router;

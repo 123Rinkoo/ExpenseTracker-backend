@@ -1,0 +1,50 @@
+.modal-body {
+    width: 32vw;
+    height: 65vh;
+    position: relative;
+    left: 62vw;
+    display: block;
+    background-color: white;
+}
+
+#notify {
+    position: relative;
+    top: 13px
+}
+
+.modal-body form {
+    padding: 21px;
+    border: 2px solid rgba(0, 0, 0, 0.5);
+    border-radius: 5px;
+    background-color: white;
+}
+
+#category {
+    width: 20%;
+    position: relative;
+    top: 9px;
+}
+
+.makingFormFlex {
+    display: flex;
+    flex-direction: row;
+    column-gap: 30px;
+    align-items: center;
+    /* position: relative; */
+    /* left: 13vw; */
+}
+
+#errorShowing {
+    /* width: 18vw;
+    text-align: center;
+    position: relative;
+    left: 73vw;
+    bottom: 35vh; */
+    position: relative;
+    bottom: 49px;
+}
+
+.loginSignUpButton{
+    position: relative;
+    left: 55vw;
+}
