@@ -8,7 +8,8 @@ function addingUser(event) {
   // console.log(name, email, password);
 
   axios.post('http://localhost:8000/user/SigningUp', { key1: name, key2: email, key3: password })
-    .then(result => SuccesfullSignUp(result.data.message))
+    .then(result => {
+      SuccesfullSignUp(result.data.message)})
     .catch(err => errorInLoginSignUp(err.response.data.message));
 }
 
@@ -22,7 +23,7 @@ function logInUser(event) {
     .then((result) => {
       // console.log(result);
       localStorage.setItem('token', result.data.token);
-      SuccesfullLoginUp(result.data.message);
+      SuccesfullLoginUp(result.data);
     })
     .catch(err => errorInLoginSignUp(err.response.data.message));
 }
@@ -82,6 +83,32 @@ function OpeningLoginform() {
   id1.innerHTML = id2;
 }
 
+function OpeningLoginform2() {
+  const id1 = document.getElementById('hello');
+  const id2 = `<div class="modal-body" id="closeform">
+  <form onsubmit="logInUser(event)" id="thisIsform">
+  
+  <div class="mb-3">
+  <label for="exampleInputEmail1" class="form-label">Email Id</label>
+  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="enter your email Id" name="email" required>
+  
+  </div>
+  <div class="mb-3">
+  <label for="exampleInputPassword1" class="form-label" >Password</label>
+  <input type="password" class="form-control" id="passy" placeholder="enter your password">
+  </div>
+  
+  <button type="submit" class="btn btn-danger" >Login</button>
+  <button type="submit" class="btn btn-danger" onclick="OpeningSigningform()">Sign Up</button>
+  <button type="button" class="btn btn-light" onclick="closingSigningform()">Close</button><br>
+  <div id="notify"></div>
+  </form>
+  
+  </div>`
+  id1.innerHTML = id2;
+}
+
+
 function errorInLoginSignUp(message) {
   const id1 = document.getElementById('notify');
   // let id2= `<h4>*${message}!</h4>`
@@ -91,17 +118,22 @@ function errorInLoginSignUp(message) {
   id1.innerHTML = id1.innerHTML + id2;
   setTimeout(() => {
     id1.innerHTML = "";
-  }, 3000);
+  }, 8000);
 }
 function closingSigningform() {
 
   const id1 = document.getElementById('closeform');
   id1.style = "display: none";
 }
-function SuccesfullLoginUp(message) {
-  alert(`${message}`);
-  window.location.href = 'expense.html';
-  
+function SuccesfullLoginUp(data) {
+  alert(`${data.message}`);
+  if(data.found.ispremiumuser==true)
+  {
+    window.location.href = 'premium.html';
+  }
+  else{
+    window.location.href = 'expense.html';
+  }
 }
 
 function SuccesfullSignUp(message) {

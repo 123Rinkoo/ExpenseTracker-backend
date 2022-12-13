@@ -4,8 +4,9 @@ var cors=require('cors');
 const path = require('path');
 const UserRoute=require('./Route/User');
 const ExpenseRoute=require('./Route/expense');
+const purchaseRoutes=require('./Route/purchase');
 
-
+const Order=require('./model/orders');
 const User=require('./model/user');
 const Expense=require('./model/expense');
 
@@ -19,17 +20,22 @@ app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/user', UserRoute);
 app.use('/expense', ExpenseRoute);
+app.use('/purchase', purchaseRoutes);
 
 Expense.belongsTo(User, { constraints: true, onDelete: 'CASCADE' });
 User.hasMany(Expense);
 
+User.hasMany(Order);
+Order.belongsTo(User);
  
 sequelize
+// .sync({force: true})
 .sync()
+
 .then(result=>{
     app.listen(8000); 
 } )
-.catch(err=> console.log(err))
+.catch(err=> console.log(err));
 
 
 

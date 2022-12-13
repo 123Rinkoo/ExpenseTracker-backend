@@ -44,7 +44,23 @@
     bottom: 49px;
 }
 
-.loginSignUpButton{
+.loginSignUpButton {
     position: relative;
     left: 55vw;
+}
+
+#addExpenseForm {
+
+    position: relative;
+    top: 4vh;
+
+}
+
+#mainForm {
+    border: 1px solid black;
+}
+
+#primeMemberButtton {
+    position: relative;
+    left: 54vw;
 }
