@@ -83,30 +83,30 @@ function OpeningLoginform() {
   id1.innerHTML = id2;
 }
 
-function OpeningLoginform2() {
-  const id1 = document.getElementById('hello');
-  const id2 = `<div class="modal-body" id="closeform">
-  <form onsubmit="logInUser(event)" id="thisIsform">
+// function OpeningLoginform2() {
+//   const id1 = document.getElementById('hello');
+//   const id2 = `<div class="modal-body" id="closeform">
+//   <form onsubmit="logInUser(event)" id="thisIsform">
   
-  <div class="mb-3">
-  <label for="exampleInputEmail1" class="form-label">Email Id</label>
-  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="enter your email Id" name="email" required>
+//   <div class="mb-3">
+//   <label for="exampleInputEmail1" class="form-label">Email Id</label>
+//   <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="enter your email Id" name="email" required>
   
-  </div>
-  <div class="mb-3">
-  <label for="exampleInputPassword1" class="form-label" >Password</label>
-  <input type="password" class="form-control" id="passy" placeholder="enter your password">
-  </div>
+//   </div>
+//   <div class="mb-3">
+//   <label for="exampleInputPassword1" class="form-label" >Password</label>
+//   <input type="password" class="form-control" id="passy" placeholder="enter your password">
+//   </div>
   
-  <button type="submit" class="btn btn-danger" >Login</button>
-  <button type="submit" class="btn btn-danger" onclick="OpeningSigningform()">Sign Up</button>
-  <button type="button" class="btn btn-light" onclick="closingSigningform()">Close</button><br>
-  <div id="notify"></div>
-  </form>
+//   <button type="submit" class="btn btn-danger" >Login</button>
+//   <button type="submit" class="btn btn-danger" onclick="OpeningSigningform()">Sign Up</button>
+//   <button type="button" class="btn btn-light" onclick="closingSigningform()">Close</button><br>
+//   <div id="notify"></div>
+//   </form>
   
-  </div>`
-  id1.innerHTML = id2;
-}
+//   </div>`
+//   id1.innerHTML = id2;
+// }
 
 
 function errorInLoginSignUp(message) {
@@ -135,7 +135,6 @@ function SuccesfullLoginUp(data) {
     window.location.href = 'expense.html';
   }
 }
-
 function SuccesfullSignUp(message) {
   alert(`${message}`);
   window.location.href = 'index.html';

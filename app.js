@@ -4,7 +4,8 @@ var cors=require('cors');
 const path = require('path');
 const UserRoute=require('./Route/User');
 const ExpenseRoute=require('./Route/expense');
-const purchaseRoutes=require('./Route/purchase');
+const purchaseRoute=require('./Route/purchase');
+const premiumRoute=require('./Route/premium');
 
 const Order=require('./model/orders');
 const User=require('./model/user');
@@ -20,7 +21,8 @@ app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/user', UserRoute);
 app.use('/expense', ExpenseRoute);
-app.use('/purchase', purchaseRoutes);
+app.use('/purchase', purchaseRoute);
+app.use('/premium', premiumRoute);
 
 Expense.belongsTo(User, { constraints: true, onDelete: 'CASCADE' });
 User.hasMany(Expense);

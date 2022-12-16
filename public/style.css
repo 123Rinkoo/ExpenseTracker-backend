@@ -49,6 +49,11 @@
     left: 55vw;
 }
 
+#leaderboardButton {
+    position: relative;
+    left: 45vw;
+}
+
 #addExpenseForm {
 
     position: relative;
@@ -63,4 +68,15 @@
 #primeMemberButtton {
     position: relative;
     left: 54vw;
+}
+
+/* #form {
+    position: relative;
+    bottom: 64vh;
+} */
+
+#hello {
+    position: absolute;
+    top: 7px;
+    left: 20px;
 }

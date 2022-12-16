@@ -9,6 +9,7 @@ exports.addExpense=(req, res, next)=>{
     .then(result=>res.json(result))
     .catch(err=>{return res.status(403).json({success: false, error : err})})
 };
+
 exports.getExpense=(req, res, next)=>{
     console.log(req.user.id);
     
