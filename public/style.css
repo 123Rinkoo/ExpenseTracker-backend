@@ -5,6 +5,7 @@
     left: 62vw;
     display: block;
     background-color: white;
+    border-radius: 12px;
 }
 
 #notify {
@@ -30,16 +31,9 @@
     flex-direction: row;
     column-gap: 30px;
     align-items: center;
-    /* position: relative; */
-    /* left: 13vw; */
 }
 
 #errorShowing {
-    /* width: 18vw;
-    text-align: center;
-    position: relative;
-    left: 73vw;
-    bottom: 35vh; */
     position: relative;
     bottom: 49px;
 }
@@ -69,11 +63,6 @@
     position: relative;
     left: 54vw;
 }
-
-/* #form {
-    position: relative;
-    bottom: 64vh;
-} */
 
 #hello {
     position: absolute;

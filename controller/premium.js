@@ -5,7 +5,6 @@ exports.forLeaderboard=(req, res, next)=>{
    
     User.findAll()
     .then((users)=>{
-        // console.log(users[0].id);
         const array=[];
         for(let i=0; i<users.length; i++){
             Expense.findAll({where: {userId: users[i].id}})
@@ -19,13 +18,10 @@ exports.forLeaderboard=(req, res, next)=>{
                     array.sort(function(a, b){return b.TotalExpense-a.TotalExpense});
                     if(i==users.length-1){
                         return res.json(array);
-                        // console.log(array);
                     }
                 })
                 .catch(err=>console.log(err));
             }
-           
-            // array.length=0;
         })
     .catch(err=>console.log(err));
 }

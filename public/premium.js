@@ -14,7 +14,7 @@ function OpeningLeaderboard(totalExpenseArray) {
         <ol id="thisIsUnique">
         </ol>
         <br>
-        <button type="button" class="btn btn-light" onclick="closingSigningform()">Close</button>
+        <button type="button" class="btn btn-outline-dark" onclick="closingSigningform()">Close</button>
     </form>
 </div>`
 id1.innerHTML=id2;

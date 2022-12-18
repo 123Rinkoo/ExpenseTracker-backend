@@ -9,12 +9,8 @@ function generateAccessToken(id, name){
 
 
 exports.signingUp = (req, res, next) => {
-    // console.log(req.body.key1, req.body.key2, req.body.key3);  
-
     User.findAll()
         .then(users => {
-            // console.log(users[0].email)
-            // const findemail=users.find(element.email=> element.email==req.body.key2)
             var found = users.find(function (element) {
                 return element.email == req.body.key2;
             });
@@ -26,7 +22,6 @@ exports.signingUp = (req, res, next) => {
                 });
             }
             else {
-                // console.log('user exist');
                 return res.status(500).json({ success: false, message: "User already exists" })
             }
         })
@@ -35,11 +30,8 @@ exports.signingUp = (req, res, next) => {
 };
 
 exports.login=(req, res, next)=>{
-     // console.log(req.body.key1, req.body.key2);
      User.findAll()
      .then(users => {
-         // console.log(users[0].email)
-         // const findemail=users.find(element.email=> element.email==req.body.key2)
          var found = users.find(function (element) {
              return element.email == req.body.key1;
          });

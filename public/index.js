@@ -5,8 +5,6 @@ function addingUser(event) {
   const email = event.target.email.value;
   const password = document.getElementById('passy').value;
 
-  // console.log(name, email, password);
-
   axios.post('http://localhost:8000/user/SigningUp', { key1: name, key2: email, key3: password })
     .then(result => {
       SuccesfullSignUp(result.data.message)})
@@ -17,11 +15,9 @@ function logInUser(event) {
   event.preventDefault();
   const email = event.target.email.value;
   const password = document.getElementById('passy').value;
-  // console.log(email, password);
 
   axios.post('http://localhost:8000/user/login', { key1: email, key2: password })
     .then((result) => {
-      // console.log(result);
       localStorage.setItem('token', result.data.token);
       SuccesfullLoginUp(result.data);
     })
@@ -75,6 +71,7 @@ function OpeningLoginform() {
   
   <button type="submit" class="btn btn-danger" >Login</button>
   <button type="submit" class="btn btn-danger" onclick="OpeningSigningform()">Sign Up</button>
+  <button type="button" class="btn btn-danger" onclick="resetPasswordForm()">Reset Password?</button>
   <button type="button" class="btn btn-light" onclick="closingSigningform()">Close</button><br>
   <div id="notify"></div>
   </form>
@@ -83,35 +80,35 @@ function OpeningLoginform() {
   id1.innerHTML = id2;
 }
 
-// function OpeningLoginform2() {
-//   const id1 = document.getElementById('hello');
-//   const id2 = `<div class="modal-body" id="closeform">
-//   <form onsubmit="logInUser(event)" id="thisIsform">
+function resetPasswordForm(){
+  const id1 = document.getElementById('hello');
+  const id2 = `<div class="modal-body" id="closeform">
+  <form onsubmit="resetPassword(event)" id="thisIsform">
   
-//   <div class="mb-3">
-//   <label for="exampleInputEmail1" class="form-label">Email Id</label>
-//   <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="enter your email Id" name="email" required>
+  <div class="mb-3">
+  <label for="exampleInputEmail1" class="form-label">Email Id</label>
+  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="enter your email Id" name="email" required>
+  </div>
   
-//   </div>
-//   <div class="mb-3">
-//   <label for="exampleInputPassword1" class="form-label" >Password</label>
-//   <input type="password" class="form-control" id="passy" placeholder="enter your password">
-//   </div>
+  <button type="submit" class="btn btn-danger">Reset Password</button>
+  <button type="button" class="btn btn-light" onclick="closingSigningform()">Close</button><br>
+  <div id="notify"></div>
+  </form>
   
-//   <button type="submit" class="btn btn-danger" >Login</button>
-//   <button type="submit" class="btn btn-danger" onclick="OpeningSigningform()">Sign Up</button>
-//   <button type="button" class="btn btn-light" onclick="closingSigningform()">Close</button><br>
-//   <div id="notify"></div>
-//   </form>
-  
-//   </div>`
-//   id1.innerHTML = id2;
-// }
+  </div>`
+  id1.innerHTML = id2;
+}
 
+function resetPassword(event){
+  event.preventDefault();
+    axios.get('http://localhost:8000/password/forgotpassword')
+    .then(result=>console.log(result))
+    .catch(err=>{console.log(err)});
+
+}
 
 function errorInLoginSignUp(message) {
   const id1 = document.getElementById('notify');
-  // let id2= `<h4>*${message}!</h4>`
   let id2 = `<div class="alert alert-danger" role="alert">
     ${message}!
   </div>`

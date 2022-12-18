@@ -13,7 +13,6 @@ exports.addExpense=(req, res, next)=>{
 exports.getExpense=(req, res, next)=>{
     console.log(req.user.id);
     
-    // Expense.findAll({where: {userId: req.user.id}})
     req.user.getExpenses().then(expenses=>{
         res.json(expenses);
     })

@@ -6,7 +6,7 @@ const UserRoute=require('./Route/User');
 const ExpenseRoute=require('./Route/expense');
 const purchaseRoute=require('./Route/purchase');
 const premiumRoute=require('./Route/premium');
-
+const passwordRoute=require("./Route/password");
 const Order=require('./model/orders');
 const User=require('./model/user');
 const Expense=require('./model/expense');
@@ -23,6 +23,7 @@ app.use('/user', UserRoute);
 app.use('/expense', ExpenseRoute);
 app.use('/purchase', purchaseRoute);
 app.use('/premium', premiumRoute);
+app.use('/password', passwordRoute);
 
 Expense.belongsTo(User, { constraints: true, onDelete: 'CASCADE' });
 User.hasMany(Expense);
