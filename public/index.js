@@ -101,7 +101,8 @@ function resetPasswordForm(){
 
 function resetPassword(event){
   event.preventDefault();
-    axios.get('http://localhost:8000/password/forgotpassword')
+  const email=event.target.email.value;
+    axios.get('http://localhost:8000/password/forgotpassword', {key1: email})
     .then(result=>console.log(result))
     .catch(err=>{console.log(err)});
 
