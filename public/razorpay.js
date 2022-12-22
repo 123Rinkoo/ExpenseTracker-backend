@@ -1,6 +1,5 @@
 const token = localStorage.getItem('token');
 document.getElementById('rzp-button12345').onclick = async function (e) {
-    // console.log('i am in')
     const response = await axios.get('http://localhost:8000/purchase/premiummembership', { headers: { "Authorization": token } });
     console.log(response);
     var options =

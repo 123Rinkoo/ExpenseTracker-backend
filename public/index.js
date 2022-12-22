@@ -102,21 +102,33 @@ function resetPasswordForm(){
 function resetPassword(event){
   event.preventDefault();
   const email=event.target.email.value;
-    axios.get('http://localhost:8000/password/forgotpassword', {key1: email})
-    .then(result=>console.log(result))
-    .catch(err=>{console.log(err)});
-
+  // console.log(email);
+    axios.post('http://localhost:8000/password/forgotpassword', {key1: email})
+    .then(result=>notification(result.data.message))
+    .catch(err=>{errorInLoginSignUp(err.response.data.message)});
 }
 
+function notification(message){
+  const id1 = document.getElementById('notify');
+  id1.innerHTML="";
+  let id2 = `<div class="alert alert-success" role="alert">
+    ${message}!
+  </div>`
+  id1.innerHTML =  id2;
+  setTimeout(() => {
+    id1.innerHTML = "";
+  }, 5000);
+}
 function errorInLoginSignUp(message) {
   const id1 = document.getElementById('notify');
+  id1.innerHTML="";
   let id2 = `<div class="alert alert-danger" role="alert">
     ${message}!
   </div>`
-  id1.innerHTML = id1.innerHTML + id2;
+  id1.innerHTML =  id2;
   setTimeout(() => {
     id1.innerHTML = "";
-  }, 8000);
+  }, 5000);
 }
 function closingSigningform() {
 

@@ -11,7 +11,6 @@ function addingExpense(event) {
     const expenseAmount = event.target.eamount.value;
     const description = event.target.desc.value;
     const category = event.target.category.value;
-    // console.log(expenseAmount, description, category);
     event.target.eamount.value = "";
     event.target.desc.value = "";
     event.target.category.value = "Choose...";
@@ -23,17 +22,13 @@ function addingExpense(event) {
 }
 
 function showNewExpensesonScreen(obj) {
-    // document.getElementById("Expense_Amount").value="";
-    // document.getElementById("Description").value="";
-
     const parentnode = document.getElementById("newexpense");
     const childHtml = `<li id="${obj.id}">Rs.${obj.Expense_Amount} - ${obj.Description} - ${obj.Category} 
-                    <button onclick="deletefromscreen('${obj.id}')">Delete Expense</button>`
+                    <button onclick="deletefromscreen('${obj.id}')">Delete Expense</button>`;
     parentnode.innerHTML = parentnode.innerHTML + childHtml;
 }
 
 function showOldExpensesonScreen(responseArray) {
-    // leaderboard(responseArray);
     for (let i = 0; i < responseArray.length; i++) {
         const parentnode = document.getElementById("newexpense");
         const childHtml = `<li id="${responseArray[i].id}">Rs.${responseArray[i].Expense_Amount} - ${responseArray[i].Description} - ${responseArray[i].Category} 

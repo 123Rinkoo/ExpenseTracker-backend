@@ -9,14 +9,13 @@ const purchasepremium =async (req, res) => {
             key_secret: "5QkZnnAG4ACaS2VMKabrMnvx"
         }) 
         const amount = 2500;
-        // console.log(rzp);
-        // console.log(rzp.orders.create());
+       
         rzp.orders.create({amount: amount, currency: "INR"}, (err, order) => {
             if(err) {
                 throw new Error(err);
             }
             console.log(order);
-            // console.log('8:53 its working')
+        
             req.user.createOrder({ orderid: order.id, status: 'PENDING'})
             .then(() => {
                 return res.status(201).json({ order, key_id : rzp.key_id});              

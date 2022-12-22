@@ -1,7 +1,7 @@
 const Expense = require('../model/expense');
 
 exports.addExpense=(req, res, next)=>{
-    console.log('coming')
+    // console.log('coming')
     if(req.body.key1.length==0|| req.body.key2.length==0){
         return res.status(400).json({success: false, message: 'Parameter missing'});
     }
