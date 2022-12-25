@@ -13,6 +13,7 @@ const Order=require('./model/orders');
 const User=require('./model/user');
 const Expense=require('./model/expense');
 const ForgetPassword=require('./model/forget_password');
+const File_URL=require('./model/downloadfileURL');
 
 const sequelize=require('./util/database');
 const bodyParser = require('body-parser');
