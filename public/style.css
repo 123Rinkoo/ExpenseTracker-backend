@@ -81,3 +81,27 @@
     top: 7px;
     left: 20px;
 }
+
+#pagination {
+    display: flex;
+    flex-direction: row;
+    column-gap: 16px;
+    position: relative;
+    top: 15px;
+    width: 26vw;
+    margin: 0 9vw;
+}
+
+#pagination a {
+    text-decoration: none;
+    color: #09695c;
+    padding: 0.5rem;
+    border: 1px solid #09695c;
+   
+}
+
+#pagination a:hover,
+#pagination a:active {
+    background: #09695c;
+    color: white;
+}

@@ -1,7 +1,43 @@
 window.onload = function () {
     const token=localStorage.getItem('token');
     axios.get('http://localhost:8000/expense/getexpense', { headers: {"Authorization": token}})
-        .then(res => {showOldExpensesonScreen(res.data)})
+        .then(res => {
+            console.log(res.data);
+            showOldExpensesonScreen(res.data.Expenses)
+            ShowingPagination(res.data);
+        })
+        .catch(err => console.log(err));
+}
+
+function ShowingPagination({ currentPage, hasNextPage, nextPage, hasPreviousPage, previousPage, lastPage }) {
+    let pagination = document.getElementById('pagination');
+    pagination.innerHTML = "";
+    if (hasPreviousPage) {
+        const btn1 = document.createElement('button');
+        btn1.innerText = previousPage;
+        btn1.addEventListener('click', () => { getproducts(previousPage) });
+        pagination.appendChild(btn1);
+    }
+    const btn2 = document.createElement('button');
+    btn2.innerText = currentPage;
+    btn2.addEventListener('click', () => { getproducts(currentPage) });
+    pagination.appendChild(btn2);
+
+    if (hasNextPage) {
+        const btn3 = document.createElement('button')
+        btn3.innerText = nextPage;
+        btn3.addEventListener('click', () => { getproducts(nextPage) });
+        pagination.appendChild(btn3);
+    }
+}
+
+function getproducts(page) {
+    const token=localStorage.getItem('token');
+    axios.get(`http://localhost:8000/expense/getexpense?paaag=${page}`, { headers: {"Authorization": token}})
+        .then(res => {
+            showOldExpensesonScreen(res.data.Expenses);
+            ShowingPagination(res.data);
+        })
         .catch(err => console.log(err));
 }
 
@@ -29,8 +65,9 @@ function showNewExpensesonScreen(obj) {
 }
 
 function showOldExpensesonScreen(responseArray) {
+    const parentnode = document.getElementById("newexpense");
+    parentnode.innerHTML="";
     for (let i = 0; i < responseArray.length; i++) {
-        const parentnode = document.getElementById("newexpense");
         const childHtml = `<li id="${responseArray[i].id}">Rs.${responseArray[i].Expense_Amount} - ${responseArray[i].Description} - ${responseArray[i].Category} 
                             <button onclick="deleteexpenseLOCAL('${responseArray[i].id}')">Delete Expense</button>`
         parentnode.innerHTML = parentnode.innerHTML + childHtml;
