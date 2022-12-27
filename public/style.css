@@ -97,7 +97,14 @@
     color: #09695c;
     padding: 0.5rem;
     border: 1px solid #09695c;
-   
+
+}
+
+.rowsperpage {
+    width: 18vw;
+    position: absolute;
+    top: 15vw;
+    right: 9vw;
 }
 
 #pagination a:hover,

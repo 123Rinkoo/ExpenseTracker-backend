@@ -82,6 +82,21 @@
 
     </form>
     <ul id="newexpense"></ul>
+    <div class="rowsperpage">
+        <form onsubmit="rowsperpageclicked(event)">
+            <div id="rowsperpageMakingFlex" style="display: flex;column-gap: 11px;">
+                <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" name="rperpage" required>
+                    <option selected>Rows Per Page</option>
+                    <option value="5">5</option>
+                    <option value="10">10</option>
+                    <option value="15">15</option>
+                    <option value="20">20</option>
+                    <option value="25">25</option>
+                </select>
+                <button type="submit" class="btn btn-warning" style="height: 47px">Go</button>
+            </div>
+        </form>
+        </div>
     <section id="pagination"> 
         <!-- <a href="/expense/getexpense?page=1">1</a> -->
         <!-- <a href="/expense/getexpense?page=2">2</a> -->

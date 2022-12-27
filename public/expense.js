@@ -1,6 +1,7 @@
 window.onload = function () {
     const token=localStorage.getItem('token');
-    axios.get('http://localhost:8000/expense/getexpense', { headers: {"Authorization": token}})
+    const Rows_perpage=localStorage.getItem('RowsPerPage');
+    axios.get(`http://localhost:8000/expense/getexpense?rpp=${Rows_perpage}`, { headers: {"Authorization": token}})
         .then(res => {
             console.log(res.data);
             showOldExpensesonScreen(res.data.Expenses)
@@ -29,11 +30,19 @@ function ShowingPagination({ currentPage, hasNextPage, nextPage, hasPreviousPage
         btn3.addEventListener('click', () => { getproducts(nextPage) });
         pagination.appendChild(btn3);
     }
+    if(nextPage!==lastPage & currentPage!==lastPage ){
+        const btn4 = document.createElement('button')
+        btn4.innerText = `...${lastPage}`;
+        btn4.addEventListener('click', () => { getproducts(lastPage) });
+        pagination.appendChild(btn4);
+    }
 }
 
 function getproducts(page) {
     const token=localStorage.getItem('token');
-    axios.get(`http://localhost:8000/expense/getexpense?paaag=${page}`, { headers: {"Authorization": token}})
+    const Row_perpage=localStorage.getItem('RowsPerPage');
+    // console.log('this is from getproducts', Row_perpage)
+    axios.get(`http://localhost:8000/expense/getexpense?paaag=${page}&rpp=${Row_perpage}`, { headers: {"Authorization": token}})
         .then(res => {
             showOldExpensesonScreen(res.data.Expenses);
             ShowingPagination(res.data);

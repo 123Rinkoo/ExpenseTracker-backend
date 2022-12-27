@@ -16,13 +16,19 @@ function downloadFile(){
     .catch(err=>console.log(err));
 }
 
+function rowsperpageclicked(event){
+    event.preventDefault();
+    const RowsPerPage=event.target.rperpage.value;
+    localStorage.setItem('RowsPerPage', RowsPerPage);
+    location.reload(); 
+} 
+
 function OpeningFileURl(fileURL) {
     const id1 = document.getElementById('hello');
     const id2=`<div class="modal-body" id="closeform">
     <div>
     <form id="thisIform">
         <p>${fileURL}</p>
-        
         <button type="button" class="btn btn-outline-dark" onclick="closingSigningform()">Close</button>
     </form>
     </div>
