@@ -16,7 +16,7 @@ function downloadFile(){
     .catch(err=>console.log(err));
 }
 
-function rowsperpageclicked(event){
+function rowsperpageclicked1(event){
     event.preventDefault();
     const RowsPerPage=event.target.rperpage.value;
     localStorage.setItem('RowsPerPage', RowsPerPage);

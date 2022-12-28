@@ -10,6 +10,14 @@ window.onload = function () {
         .catch(err => console.log(err));
 }
 
+function rowsperpageclicked2(event){
+    event.preventDefault();
+    const RowsPerPage=event.target.rperpage.value;
+    localStorage.setItem('RowsPerPage', RowsPerPage);
+    location.reload(); 
+} 
+
+
 function ShowingPagination({ currentPage, hasNextPage, nextPage, hasPreviousPage, previousPage, lastPage }) {
     let pagination = document.getElementById('pagination');
     pagination.innerHTML = "";
