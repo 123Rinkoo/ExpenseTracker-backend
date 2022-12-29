@@ -1,8 +1,8 @@
 const Sequelize= require('sequelize');
 
-const sequelize= new Sequelize('expensetrekker', 'root', 'vidmate', {
+const sequelize= new Sequelize(`${process.env.TableName}`, `${process.env.User_Name}`, `${process.env.Password}`, {
     dialect: 'mysql',
-    host: 'localhost'
+    host: process.env.Host
 });
 
 module.exports=sequelize;
