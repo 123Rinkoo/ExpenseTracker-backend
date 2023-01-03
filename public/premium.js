@@ -1,5 +1,5 @@
 function clickedLeaderboardButton() {
-    axios.get('http://43.206.254.205:8000/premium/getusers')
+    axios.get('http://localhost:8000/premium/getusers')
         .then(totalExpenseArray => {
             OpeningLeaderboard(totalExpenseArray.data);
             console.log(totalExpenseArray.data);
@@ -9,7 +9,7 @@ function clickedLeaderboardButton() {
 
 function downloadFile(){
     const token=localStorage.getItem('token');
-    axios.get('http://43.206.254.205:8000/premium/download',{ headers: {"Authorization": token}})
+    axios.get('http://localhost:8000/premium/download',{ headers: {"Authorization": token}})
     .then(response=>{
         OpeningFileURl(response.data.fileURL)
     })
@@ -37,7 +37,7 @@ id1.innerHTML=id2;
 }
 
 function GettingDownloadedFiles(){
-    axios.get('http://43.206.254.205:8000/premium/downloadedfilelist')
+    axios.get('http://localhost:8000/premium/downloadedfilelist')
     .then(res=> {
         console.log(res.data.result)
         showingFileUrlList(res.data.result)})

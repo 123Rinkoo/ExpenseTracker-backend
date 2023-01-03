@@ -1,6 +1,6 @@
 const token = localStorage.getItem('token');
 document.getElementById('rzp-button12345').onclick = async function (e) {
-    const response = await axios.get('http://43.206.254.205:8000/purchase/premiummembership', { headers: { "Authorization": token } });
+    const response = await axios.get('http://localhost:8000/purchase/premiummembership', { headers: { "Authorization": token } });
     console.log(response);
     var options =
     {
@@ -18,7 +18,7 @@ document.getElementById('rzp-button12345').onclick = async function (e) {
         // This handler function will handle the success payment
         "handler": function (response) {
             console.log(response);
-            axios.post('http://43.206.254.205:8000/purchase/updatetransactionstatus', {
+            axios.post('http://localhost:8000/purchase/updatetransactionstatus', {
                 order_id: options.order_id,
                 payment_id: response.razorpay_payment_id,
             }, { headers: { "Authorization": token } }).then(() => {

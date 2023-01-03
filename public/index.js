@@ -5,7 +5,7 @@ function addingUser(event) {
   const email = event.target.email.value;
   const password = document.getElementById('passy').value;
 
-  axios.post('http://43.206.254.205:8000/user/SigningUp', { key1: name, key2: email, key3: password })
+  axios.post('http://localhost:8000/user/SigningUp', { key1: name, key2: email, key3: password })
     .then(result => {
       SuccesfullSignUp(result.data.message)})
     .catch(err => errorInLoginSignUp(err.response.data.message));
@@ -16,7 +16,7 @@ function logInUser(event) {
   const email = event.target.email.value;
   const password = document.getElementById('passy').value;
 
-  axios.post('http://43.206.254.205:8000/user/login', { key1: email, key2: password })
+  axios.post('http://localhost:8000/user/login', { key1: email, key2: password })
     .then((result) => {
       localStorage.setItem('token', result.data.token);
       SuccesfullLoginUp(result.data);
@@ -103,7 +103,7 @@ function resetPassword(event){
   event.preventDefault();
   const email=event.target.email.value;
   // console.log(email);
-    axios.post('http://43.206.254.205:8000/password/forgotpassword', {key1: email})
+    axios.post('http://localhost:8000/password/forgotpassword', {key1: email})
     .then(result=>notification(result.data.message))
     .catch(err=>{errorInLoginSignUp(err.response.data.message)});
 }
