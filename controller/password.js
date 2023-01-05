@@ -17,9 +17,9 @@ exports.forgotpassword = (req, res, next) => {
     const apiKey = client.authentications['api-key']
     const resetId = uuid.v4();
     // const resetUrl='7bd3c424-4b7a-4f9d-8916-32173381c11c';
-    const resetUrl = `http://localhost:8005/password/forgotpassword/${resetId}`;
+    const resetUrl = `http://54.250.168.167:8005/password/forgotpassword/${resetId}`;
 
-    console.log(`http://localhost:8005/password/forgotpassword/${resetId}`);
+    console.log(`http://54.250.168.167:8005/password/forgotpassword/${resetId}`);
 
     User.findOne({ where: { email: `${email}` } })
         .then(foundUser => {
@@ -63,7 +63,7 @@ exports.forgotpassword = (req, res, next) => {
         subject: 'hello this is demo of sendInBlue',
         htmlContent: `
         <h1>Cules Coding</h1>
-        <a href="http://localhost:8005/password/forgotpassword/${resetUrl}">Click this link to reset your password</a>`
+        <a href="http://54.250.168.167:8005/password/forgotpassword/${resetUrl}">Click this link to reset your password</a>`
     })
         .then(result => console.log('msg sent'))
         .catch(err => console.log("err is coming"))

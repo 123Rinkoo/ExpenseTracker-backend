@@ -1,7 +1,7 @@
 window.onload = function () {
     const token=localStorage.getItem('token');
     const Rows_perpage=localStorage.getItem('RowsPerPage');
-    axios.get(`http://localhost:8005/expense/getexpense?rpp=${Rows_perpage}`, { headers: {"Authorization": token}})
+    axios.get(`http://54.250.168.167:8005/expense/getexpense?rpp=${Rows_perpage}`, { headers: {"Authorization": token}})
         .then(res => {
             console.log(res.data);
             showOldExpensesonScreen(res.data.Expenses)
@@ -50,7 +50,7 @@ function getproducts(page) {
     const token=localStorage.getItem('token');
     const Row_perpage=localStorage.getItem('RowsPerPage');
     // console.log('this is from getproducts', Row_perpage)
-    axios.get(`http://localhost:8005/expense/getexpense?paaag=${page}&rpp=${Row_perpage}`, { headers: {"Authorization": token}})
+    axios.get(`http://54.250.168.167:8005/expense/getexpense?paaag=${page}&rpp=${Row_perpage}`, { headers: {"Authorization": token}})
         .then(res => {
             showOldExpensesonScreen(res.data.Expenses);
             ShowingPagination(res.data);
@@ -67,7 +67,7 @@ function addingExpense(event) {
     event.target.eamount.value = "";
     event.target.desc.value = "";
     event.target.category.value = "Choose...";
-    axios.post('http://localhost:8005/expense/addexpense', { key1: expenseAmount, key2: description, key3: category },{ headers: {"Authorization": token}})
+    axios.post('http://54.250.168.167:8005/expense/addexpense', { key1: expenseAmount, key2: description, key3: category },{ headers: {"Authorization": token}})
         .then(res => {
             showNewExpensesonScreen(res.data);
         })
@@ -92,7 +92,7 @@ function showOldExpensesonScreen(responseArray) {
 }
 
 function deleteexpenseLOCAL(f) {
-    axios.delete(`http://localhost:8005/expense/deleting/${f}`)
+    axios.delete(`http://54.250.168.167:8005/expense/deleting/${f}`)
         .then(result => {
             console.log('hello')
         })
